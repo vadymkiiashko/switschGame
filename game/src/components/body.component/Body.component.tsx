@@ -6,7 +6,7 @@ import { StartModal } from "./startGame.component";
 
 export function Body (){
     const {cells , createCells , toggleCell } = useBodyContext()
-    const {isActive} = useGameContext()
+    const {isActive} = useGameContext() 
     
 
     useEffect(()=>{createCells()},[])
