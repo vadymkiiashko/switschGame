@@ -1,16 +1,19 @@
-import  React   from 'react'
 
 
 type CellProps = {
     id : number , 
     isOn : boolean,
-    handler : (id:number)=>void
-    
+    purpose : string   
 }
 
-export function  Cell( {id , isOn , handler} : CellProps  )  {
+export function  Cell( {id , isOn  , purpose } : CellProps  )  {
+    
     return (
-        <div  className={`cell ${isOn ? 'on' : ''}`} onClick ={()=>handler(id)} >
+        <div data-tag={id} className={
+                `cell ${isOn ? 'on' : ''} 
+                ${purpose==='' ? '' : 
+                    purpose ==='victory' ? 'victory' : 'initial'  }`}
+              >
          
         </div>
     )

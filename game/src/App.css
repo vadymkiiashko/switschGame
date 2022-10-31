@@ -5,13 +5,17 @@
   position:absolute;
   left: 50%;
   top: 50%;
-  translate: -30vh -25vh;
+  translate: -50% -50%;
   display :flex;
+  flex: 2 2 auto;
+  width: 25em;
+  height: 30em;
+  min-width: fit-content;
+  min-height: fit-content; 
   flex-direction: column;
   border: 0.05em solid rgb(147, 146, 146);
   box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;
-  width: 55vh;
-  height: 60vh;
+
 }
 
 .header,
@@ -22,6 +26,7 @@
   display: flex;
   justify-content: center;
   min-height: 1.5em;
+  flex-shrink: 1;
   color: #777 ;
 }
 
@@ -87,7 +92,7 @@
   background-color: #2EC0A6 ;
   color: white;
   text-transform: uppercase;
-  border-radius: 4em;
+  border-radius: 3em;
   border: none ;
   align-self: center;
   
@@ -102,14 +107,24 @@
 .cell {
   display: inline-block;
   padding: 0;
+  min-width: 1em;
+  min-height: 1em;
   width: 100%;
   height: 100%;
   border-radius: 0.25em;
   border: 0.25em  solid rgb(209, 209, 209);
-  background-color: none;
+  background-color: transparent;
   z-index: 10;
 }
 
  .on {
   background-color: #8A85BD;
+}
+
+.victory {
+  background-color: #73DCE6;
+}
+
+.initial {
+  background-color: transparent;
 }

@@ -1,4 +1,4 @@
-import { createContext, useContext , ReactNode, useState } from "react";
+/*import { createContext, useContext , ReactNode, useState } from "react";
 import { useBodyContext } from "./game.body.context";
 
 type GameContext ={
@@ -37,14 +37,14 @@ export function GameContextProvider( {children} : GameProviderProps){
     function reloadGame(){
         console.log('reloading')
         setIsActive(()=>true)
-        setIsWon(false)
+        setIsWon(()=>false)
         createCells()
     }
 
     function abortGame(){
         console.log('aborting')
         setIsActive(()=>false)
-        setIsWon(false)
+        setIsWon(()=>false)
         createCells()
     }
     
@@ -60,3 +60,4 @@ export function GameContextProvider( {children} : GameProviderProps){
         </GameContext.Provider>
     )
 }
+*/

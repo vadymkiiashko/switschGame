@@ -1,17 +1,23 @@
-import { useBodyContext } from "../../contexts/game.body.context"
-import { useGameContext } from "../../contexts/game.context"
-import { StartModal } from "../body.component/startGame.component";
+
+import { useAppSelector, useAppDispatch } from '../../app/hooks'
+import {  startGame  } from '../../fetures/game/gameSlice'
+
 
 export function Footer () {
-    const { numberOfClicks  } = useBodyContext()
+    const {clicks , isWon , isActive} = useAppSelector((state) => state.game)
+  
+    const dispatch = useAppDispatch()
     
-    const {isActive , reloadGame} = useGameContext();
     return (
         <div className='footer'>
          { isActive ? 
-            `${numberOfClicks} BUTTONS PRESSEd` :
-            <button className="start-btn" onClick={reloadGame}>NEW GAME</button>
+         <>
+            {`${clicks} BUTTONS PRESSEd`} 
+         </>
+         :
+            <button className="start-btn" onClick={()=>dispatch(startGame())}>NEW GAME</button>
         }
       </div>
     )
 }
+
