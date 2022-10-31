@@ -1,4 +1,3 @@
-//import { useGameContext } from "../../contexts/game.context"
 
 type HeaderActionProps = {
     action : string,

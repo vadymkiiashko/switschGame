@@ -1,7 +1,5 @@
 
 import { useAppDispatch, useAppSelector } from "../../app/hooks";
-//import { useBodyContext } from "../../contexts/game.body.context"
-//import { useGameContext } from "../../contexts/game.context";
 import { Cell } from "./cell.component";
 import { toggleCell} from "../../fetures/game/gameSlice";
 
@@ -9,7 +7,6 @@ import { toggleCell} from "../../fetures/game/gameSlice";
 export function Body (){
     const {isActive , isWon , cells} = useAppSelector(state => state.game)
     const dispatch = useAppDispatch()
-    //const { createCells , toggleCell } = useBodyContext()
     let purpose =''
     if(isWon) {
         purpose = 'victory'

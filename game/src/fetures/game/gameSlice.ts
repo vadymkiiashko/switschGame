@@ -41,11 +41,6 @@ export const gameSlice = createSlice({
         state.clicks = 0
     },
 
-    // Use the PayloadAction type to declare the contents of `action.payload`
-    incrementByAmount: (state, action: PayloadAction<number>) => {
-      state.clicks += action.payload
-    },
-
     startGame : (state) => {
         state.isActive = true
         state.clicks = 0
@@ -110,7 +105,7 @@ export const gameSlice = createSlice({
   },
 })
 
-export const { increment, incrementByAmount , startGame , toggleCell , abortGame, reloadGame} = gameSlice.actions
+export const { increment, startGame , toggleCell , abortGame, reloadGame} = gameSlice.actions
 
 // Other code such as selectors can use the imported `RootState` type
 export const selectCount = (state: RootState) => state.game.clicks
