@@ -96,9 +96,15 @@ export const gameSlice = createSlice({
     } ,
 
     abortGame : (state) =>{
+        state.cells = getInitialGrid()
+        state.isActive = false
+        state.clicks = 0
+        state.isWon = false
     },
     reloadGame : state =>{
-        startGame();
+        state.clicks =  0,
+        state.isWon = false,
+        state.cells = getInitialGrid()
     }
 
   },

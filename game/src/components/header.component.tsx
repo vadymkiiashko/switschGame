@@ -2,7 +2,7 @@ import { useAppDispatch, useAppSelector } from "../app/hooks";
 //import { useBodyContext } from "../contexts/game.body.context";
 import { HeaderAction } from "./header.component/Header.action.component";
 import { HeaderTitle } from "./header.component/Header.title.component";
-import { abortGame , reloadGame } from '../fetures/game/gameSlice'
+import { abortGame , reloadGame , startGame } from '../fetures/game/gameSlice'
 
 
 export function Header (){
@@ -24,6 +24,7 @@ export function Header (){
         
     const reloadHandler = () =>{
         dispatch(reloadGame())
+        dispatch(startGame())
     }
 
     const abortHandler = () =>{

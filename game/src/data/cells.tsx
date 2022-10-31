@@ -50,5 +50,5 @@ const idGrid = (grid:[]) : [] => {
 
 export const getInitialGrid = ():[]=>{
     const random  = Math.floor(Math.random()*3)
-    return idGrid(GRIDS[random])
+    return idGrid(GRIDS[0])
 } 
