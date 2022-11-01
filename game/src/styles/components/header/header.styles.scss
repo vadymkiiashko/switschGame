@@ -1,0 +1,26 @@
+@import '../../chunks/header.footer.scss';
+
+
+.header {
+    @include header-footer;
+    .header-action {
+        background: none;
+        position: absolute;
+        right: 1em;
+        top: 00.5em;
+        color: $header-action ;
+        text-decoration: underline;
+
+      
+        &:focus,
+        &:hover {
+            cursor: pointer;
+            color: $header-action-hover ;
+        }
+    }   
+    .header-title {    
+        text-transform: uppercase;  
+        font-weight: bold;
+    }
+      
+}

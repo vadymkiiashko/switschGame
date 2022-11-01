@@ -1,0 +1,16 @@
+@import '../../chunks/header.footer.scss';
+@import './button.styles.scss';
+@import '../../colors.scss';
+
+.footer {
+    @include header-footer;
+    text-transform: uppercase; 
+    .start-btn{
+        @include button;
+        &:focus,
+        &:hover {
+            background-color: $start-button-hover;
+            cursor: pointer;
+        }
+    } 
+}

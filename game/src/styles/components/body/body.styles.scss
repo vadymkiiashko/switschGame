@@ -1,0 +1,43 @@
+@import '../../colors.scss';
+
+.body{
+    padding: 2em 3em;
+    height: 100%;
+    background-color: $background-dark;  
+}
+
+.body-game{
+    display: grid;
+    grid-template-columns: repeat(5 , 1fr);
+    grid-template-rows: repeat(5, 1fr);
+    align-items: stretch;
+    justify-content: center;
+    gap: 0.4em;
+    
+    .cell {
+        display: inline-block;
+        padding: 0;
+        min-width: 1em;
+        min-height: 1em;
+        width: 100%;
+        height: 100%;
+        border-radius: 0.25em;
+        border: 0.25em  solid $cell-border;
+        background-color: $cell-initial;
+        z-index: 10;
+      }
+      
+    .on {
+        background-color: $cell-active;
+    }
+  
+    .victory {
+        background-color: $cell-victory;
+    }
+  
+    .initial {
+        background-color: $cell-initial;
+    }
+
+
+  }

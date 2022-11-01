@@ -2,6 +2,7 @@
 import { useAppDispatch, useAppSelector } from "../../app/hooks";
 import { Cell } from "./cell.component";
 import { toggleCell} from "../../fetures/game/gameSlice";
+import '../../styles/components/body/body.styles.scss'
 
 
 export function Body (){

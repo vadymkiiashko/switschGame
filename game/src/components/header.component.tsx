@@ -1,15 +1,14 @@
 import { useAppDispatch, useAppSelector } from "../app/hooks";
-//import { useBodyContext } from "../contexts/game.body.context";
 import { HeaderAction } from "./header.component/Header.action.component";
 import { HeaderTitle } from "./header.component/Header.title.component";
 import { abortGame , reloadGame , startGame } from '../fetures/game/gameSlice'
+import '../styles/components/header/header.styles.scss'
 
 
 export function Header (){
     //redux
     const {isActive , isWon} = useAppSelector(state => state.game)
     const dispatch = useAppDispatch()
-   // const { reloadGame , abortGame  } = useBodyContext();
     let title ='';
     let action ='';
     if(isActive === false) {

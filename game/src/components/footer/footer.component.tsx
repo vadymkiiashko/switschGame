@@ -1,7 +1,7 @@
 
 import { useAppSelector, useAppDispatch } from '../../app/hooks'
 import {  startGame  } from '../../fetures/game/gameSlice'
-
+import '../../styles/components/footer/footer.styles.scss'
 
 export function Footer () {
     const {clicks , isWon , isActive} = useAppSelector((state) => state.game)

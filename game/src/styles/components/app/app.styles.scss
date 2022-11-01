@@ -1,0 +1,26 @@
+@import '../body/body.styles.scss';
+@import '../footer/footer.styles.scss';
+@import '../header/header.styles.scss';
+
+* {
+    font-family: 'Roboto', 'Open Sans' , sans-serif;;
+  
+    .container {
+    position:absolute;
+    left: 50%;
+    top: 50%;
+    translate: -50% -50%;
+    display :flex;
+    flex: 2 2 auto;
+    width: 25em;
+    height: 30em;
+    min-width: fit-content;
+    min-height: fit-content; 
+    flex-direction: column;
+    border: 0.05em solid $border-dark;
+    box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;
+  
+  }
+}
+  
+  

@@ -1,0 +1,12 @@
+@import '../colors.scss';
+
+@mixin header-footer {
+  position: relative;
+  background-color: $background-light;
+  padding: 0.5em;
+  display: flex;
+  justify-content: center;
+  min-height: 1.5em;
+  flex-shrink: 1;
+  color: $text-main ;
+}
