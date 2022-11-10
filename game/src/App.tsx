@@ -9,15 +9,14 @@ import  './styles/components/app/app.styles.scss'
 
 function App() {
   return (
- 
-      <Provider store = {store}>
+    <Provider store={store}>
       <div className='container'>
         <Header />   
         <Body />
         <Footer />
       </div>
-      </Provider>
- )
+    </Provider>
+  )
 }
 
 export default App

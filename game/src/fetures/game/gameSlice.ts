@@ -3,20 +3,20 @@ import type { PayloadAction } from '@reduxjs/toolkit'
 import type { RootState } from '../../app/store'
 import { getInitialGrid } from '../../data/cells'
 
+export type Grid = Cell[][]
 
 //Cell type
-type Cell = {
+export type Cell = {
     isOn : boolean,
     id : number
 }
 
 // Define a type for the slice state
-interface GameState {
+export interface GameState {
   clicks: number,
   isActive : boolean,
   isWon: boolean,
-  cells : []
- 
+  cells : Grid
 }
 
 
@@ -28,6 +28,11 @@ const initialState: GameState = {
   cells : getInitialGrid()
 }
 
+const toggle = (cells: Grid, x: number, y: number) => {
+    if (x < cells[0].length && x >= 0 && y < cells.length && y >= 0) {
+        cells[x][y].isOn = !cells[x][y].isOn
+    }
+}
 
 export const gameSlice = createSlice({
   name: 'game',
@@ -49,45 +54,25 @@ export const gameSlice = createSlice({
     },
 
     toggleCell : (state, action: PayloadAction<number>)=> {
-        const id = action.payload 
-        let newCells = state.cells.map(
-            (row,indexRow) => row.map(
-                (element , indexElement)=> {
-                    if(element.id === id) {
-                        element.isOn = !element.isOn
+        const id = action.payload
+        const x = Math.floor(id / state.cells.length)
+        const y = id % state.cells.length
 
-                        if(indexRow+1 < state.cells.length ){
-                            state.cells[indexRow+1][indexElement].isOn = !state.cells[indexRow+1][indexElement].isOn
-                        }
-                        if(indexRow-1 > -1 ){
-                            state.cells[indexRow-1][indexElement].isOn = !state.cells[indexRow-1][indexElement].isOn
-                        }
+        toggle(state.cells, x, y - 1)
+        toggle(state.cells, x - 1, y)
+        toggle(state.cells, x, y)
+        toggle(state.cells, x + 1, y)
+        toggle(state.cells, x, y + 1)
 
-                        if(indexElement+1 < row.length){
-                            state.cells[indexRow][indexElement+1].isOn = !state.cells[indexRow][indexElement+1].isOn
-                        }
-
-                        if(indexElement-1 > -1){
-                            state.cells[indexRow][indexElement-1].isOn = !state.cells[indexRow][indexElement-1].isOn
-                        }          
-                        
-                    }
-                    return element
-                }
-
-            )
-        )
-        state.cells = newCells;
         state.clicks += 1;
-       //checkForVictory() 
-       let game = state.cells.find(row => 
-        row.find(element => element.isOn === false))
+        //checkForVictory() 
+        let game = state.cells.find(row => 
+            row.find(element => element.isOn === false)
+        )
         if (!game) {
-
             //handleVictory()
             state.isWon = true
         }
-
     } ,
 
     abortGame : (state) =>{

@@ -1,23 +1,36 @@
 
+import { bindActionCreators } from '@reduxjs/toolkit'
+import { connect } from 'react-redux'
 import { useAppSelector, useAppDispatch } from '../../app/hooks'
-import {  startGame  } from '../../fetures/game/gameSlice'
+import {  GameState, startGame  } from '../../fetures/game/gameSlice'
 import '../../styles/components/footer/footer.styles.scss'
 
-export function Footer () {
-    const {clicks , isWon , isActive} = useAppSelector((state) => state.game)
-  
-    const dispatch = useAppDispatch()
-    
+interface IStateProps {
+  clicks: number
+  isActive: boolean
+}
+interface IDispatchProps {
+  startGame: () => void
+}
+interface IOwnProps {}
+
+type Props = IStateProps & IDispatchProps & IOwnProps
+
+const RawFooter: React.FC<Props> = ({clicks, isActive, startGame}) => {
     return (
         <div className='footer'>
-         { isActive ? 
-         <>
-            {`${clicks} BUTTONS PRESSEd`} 
-         </>
-         :
-            <button className="start-btn" onClick={()=>dispatch(startGame())}>NEW GAME</button>
-        }
-      </div>
+            { isActive
+                ? `${clicks} BUTTONS PRESSED`
+                : <button className="start-btn" onClick={() => startGame()}>NEW GAME</button>
+            }
+        </div>
     )
 }
 
+export const Footer = connect(
+  (state: GameState) => ({
+    clicks: state.clicks,
+    isActive: state.isActive
+  }),
+  (dispatch) => bindActionCreators({ startGame }, dispatch)
+)(RawFooter)

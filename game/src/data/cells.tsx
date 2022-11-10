@@ -1,54 +1,45 @@
-const GRIDS = [
-    [
-        [{isOn : true},{isOn : false},{isOn : false},{isOn: false},{isOn: true}],
-    
-        [{isOn : false},{isOn : true},{isOn : false },{isOn : true},{isOn:false}],
-    
-        [{isOn : false },{isOn : false },{isOn : true},{isOn : false},{isOn : false}],
-       
-        [{isOn : false},{isOn : true},{isOn : false },{isOn : true},{isOn:false}],
-       
-        [{isOn : true},{isOn : false},{isOn : false},{isOn: false},{isOn: true}],
-    ] , 
+import { Cell, Grid } from "../fetures/game/gameSlice"
 
+// Starting grid configurations
+const GRIDS: string[][] = [
     [
-        [{isOn : false},{isOn : false},{isOn : true},{isOn: false},{isOn: false}],
-    
-        [{isOn : false},{isOn : true},{isOn : false },{isOn : true},{isOn:false}],
-    
-        [{isOn : true },{isOn : false },{isOn : true},{isOn : false},{isOn : true}],
-       
-        [{isOn : false},{isOn : true},{isOn : false },{isOn : true},{isOn:false}],
-       
-        [{isOn : false},{isOn : false},{isOn : true},{isOn: false},{isOn: false}],
-    ] ,
-
+        "x...x",
+        ".x.x.",
+        "..x..",
+        ".x.x.",
+        "x...x"
+    ],
     [
-        [{isOn : false},{isOn : false},{isOn : false},{isOn: false},{isOn: false}],
-    
-        [{isOn : false},{isOn : true},{isOn : true },{isOn : true},{isOn:false}],
-    
-        [{isOn : false },{isOn : true },{isOn : false},{isOn : true},{isOn : false}],
-       
-        [{isOn : false},{isOn : true},{isOn : true },{isOn : true},{isOn:false}],
-       
-        [{isOn : false},{isOn : false},{isOn : false},{isOn: false},{isOn: false}],
-    ]
-
+        "..x..",
+        ".x.x.",
+        "x.x.x",
+        ".x.x.",
+        "..x.."
+    ],
+    [
+        ".....",
+        ".xxx.",
+        ".x.x.",
+        ".xxx.",
+        "....."
+    ],
 ] 
 
 
 
-const idGrid = (grid:[]) : [] => {
-    return grid.reduce((acc, row , rowIndex) => {
-        const newRow = row.reduce( (rowAcc, element , elementIndex) => {
-            return [...rowAcc , {...element , id:+`${rowIndex}${elementIndex}`}]
-    },[])
-    return [...acc, newRow]
+const idGrid = (grid: string[]) : Grid => {
+    return grid.reduce<Grid>((acc, row , rowIndex) => {
+        const newRow = row.split("").reduce<Cell[]>((rowAcc, element , elementIndex) => {
+            return rowAcc.concat([{
+                isOn: element === "x",
+                id: rowIndex * grid.length + elementIndex
+            }])
+        }, [])
+        return acc.concat([newRow])
 } , [])
 }
 
-export const getInitialGrid = ():[]=>{
+export const getInitialGrid = (): Grid =>{
     const random  = Math.floor(Math.random()*3)
     return idGrid(GRIDS[random])
 } 
